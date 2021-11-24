@@ -22,14 +22,14 @@ class ButtonsTableViewCell : UITableViewCell {
         return cv
     }()
     
-    let buttonsArray = [ButtonsModel(buttImage: #imageLiteral(resourceName: "Vector"), buttText: "Kaspi QR"),
+    let buttonsArray = [ButtonsModel(buttImage: #imageLiteral(resourceName: "qr 2"), buttText: "Kaspi QR"),
                       ButtonsModel(buttImage: #imageLiteral(resourceName: "bank"), buttText: "Мой Банк"),
                        ButtonsModel(buttImage: #imageLiteral(resourceName: "check"), buttText: "Платежи"),
                        ButtonsModel(buttImage: #imageLiteral(resourceName: "perevod"), buttText: "Переводы"),
                        ButtonsModel(buttImage: #imageLiteral(resourceName: "Rectangle"), buttText: "Магазин"),
                        ButtonsModel(buttImage: #imageLiteral(resourceName: "Vector-1"), buttText: "Акции"),
                        ButtonsModel(buttImage: #imageLiteral(resourceName: "la_suitcase"), buttText: "Travel"),
-                      ButtonsModel(buttImage: #imageLiteral(resourceName: "fluent_building-bank-16-regular"), buttText: "Госуслуги"),
+                      ButtonsModel(buttImage: UIImage(named: "Government")!, buttText: "Госуслуги"),
                         ]
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

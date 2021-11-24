@@ -55,7 +55,9 @@ class ContainerViewController : UIViewController {
         menuVC.delegate = self
         homeVC.delegate = self
         let navVC = UINavigationController(rootViewController: homeVC)
-         navVC.navigationBar.isHidden = true
+//         navVC.navigationBar.isHidden = true
+        
+//        navVC.navigationBar.barTintColor = .green
     
         addChild(navVC)
         view.addSubview(navVC.view)

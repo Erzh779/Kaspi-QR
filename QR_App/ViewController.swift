@@ -24,12 +24,21 @@ class ViewController: UIViewController {
     
     let searchTextField = UITextField()
     
-   
+    let textField = UITextField()
     
-   
+    let leftImg = UIImageView()
+    
+    var imageView = UIImageView()
+    var image = UIImage(named: "Search")
+    
+    let padView = UIView()
     
     
     
+    
+    
+    
+ 
     
     
     override func viewDidLoad() {
@@ -49,9 +58,11 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        firstView.backgroundColor = .white
+        firstView.backgroundColor = .green
         
-        menuButton.setImage(#imageLiteral(resourceName: "fi-ss-menu-burger 1"), for: .normal)
+        menuButton.setImage(UIImage(named: "burger"), for: .normal)
+        
+//        menuButton.setBackgroundImage(UIImage(named: "burger"), for: .normal)
         
         menuButton.backgroundColor = .white
         
@@ -65,27 +76,62 @@ class ViewController: UIViewController {
         mainTableView.separatorStyle = .none
         
         menuButton.addTarget(self, action: #selector(ViewController.didTapMenuButton(_:)), for: .touchUpInside)
+        
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.isTranslucent = true
+        
+        leftImg.image = #imageLiteral(resourceName: "burger")
+        let frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        leftImg.frame = frame
+        leftImg.layer.masksToBounds = true
+        leftImg.contentMode = .scaleAspectFill
+        
+        
+        let leftBarItem  = UIBarButtonItem(customView: menuButton)
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "burger"), style: .done, target: self, action: #selector(didTapMenuButton(_:)))
+        
+        navigationItem.leftBarButtonItem = leftBarItem
+        
+        textField.text = "   Поиск по Kaspi.kz"
+        textField.textAlignment = .left
+        textField.textColor = .gray
+        textField.frame = CGRect(x: 0, y: 0, width: 340, height: 40)
+        textField.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
+        navigationItem.titleView = textField
+        textField.layer.cornerRadius = 8
+        
+       
+        imageView.image = image
+        imageView.frame = CGRect(x: 0, y: 0, width: 18, height: 18)
+//        textField.leftView = imageView
+//        textField.leftViewMode = .always
+//
+        textField.setLeftIcon(UIImage(named: "Search")!)
+       
     }
     
     func setUpViews(){
         configureViews()
-        view.addSubview(firstView)
+//        view.addSubview(firstView)
         view.addSubview(mainTableView)
-        firstView.addSubview(menuButton)
-        firstView.addSubview(searchTextField)
+//        firstView.addSubview(menuButton)
+//        firstView.addSubview(searchTextField)
         setUpConstraints()
         setupTableView()
     }
     
     func setUpConstraints(){
+//
+//        firstView.setAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, height: 40)
+////
+//        menuButton.setAnchor(top: firstView.topAnchor, left: firstView.leftAnchor, bottom: firstView.bottomAnchor, right: nil, paddingTop: 8, paddingLeft: 16, paddingBottom: -8, paddingRight: 0, width: 20, height: 20)
+//
+//        searchTextField.setAnchor(top: firstView.topAnchor, left: menuButton.rightAnchor, bottom: firstView.bottomAnchor, right: firstView.rightAnchor, paddingTop: 4, paddingLeft: 16, paddingBottom: -6, paddingRight: 20, height: 40)
         
-        firstView.setAnchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, height: 40)
+        mainTableView.setAnchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
-        menuButton.setAnchor(top: firstView.topAnchor, left: firstView.leftAnchor, bottom: firstView.bottomAnchor, right: nil, paddingTop: 8, paddingLeft: 16, paddingBottom: -8, paddingRight: 0, width: 20, height: 20)
         
-        searchTextField.setAnchor(top: firstView.topAnchor, left: menuButton.rightAnchor, bottom: firstView.bottomAnchor, right: firstView.rightAnchor, paddingTop: 4, paddingLeft: 16, paddingBottom: -6, paddingRight: 20, height: 40)
-        
-        mainTableView.setAnchor(top: firstView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
         
     }
     
@@ -176,6 +222,22 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     
     
 }
+extension UITextField {
 
+ /// set icon of 20x20 with left padding of 8px
+ func setLeftIcon(_ icon: UIImage) {
+
+    let padding = 8
+    let size = 20
+
+    let outerView = UIView(frame: CGRect(x: 0, y: 0, width: size+padding, height: size) )
+    let iconView  = UIImageView(frame: CGRect(x: padding, y: 0, width: size, height: size))
+    iconView.image = icon
+    outerView.addSubview(iconView)
+
+    leftView = outerView
+    leftViewMode = .always
+  }
+}
 
 

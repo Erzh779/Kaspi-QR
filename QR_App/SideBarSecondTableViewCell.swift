@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SideBarSeconfTableViewCell : UITableViewCell {
+class SideBarSecondTableViewCell : UITableViewCell {
     
     let cellTitle = UILabel()
     

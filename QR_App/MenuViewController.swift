@@ -71,7 +71,7 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
     
     private func setupTableView() {
         tableView.register(SideBarFirstTableViewCell.self, forCellReuseIdentifier: "SideBarFirstTableViewCell")
-        tableView.register(SideBarSeconfTableViewCell.self, forCellReuseIdentifier: "SideBarSeconfTableViewCell")
+        tableView.register(SideBarSecondTableViewCell.self, forCellReuseIdentifier: "SideBarSecondTableViewCell")
         tableView.register(SideBarThirdTableViewCell.self, forCellReuseIdentifier: "SideBarThirdTableViewCell")
         tableView.register(SideBarFourthTableViewCell.self, forCellReuseIdentifier: "SideBarFourthTableViewCell")
      
@@ -121,6 +121,15 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
 //        let item = MenuOptions.allCases[indexPath.row]
 //        delegate?.didSelect(menuItem: item)
 //    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Tapped")
+        tableView.deselectRow(at: indexPath, animated: true)
+//        let item = someArray[indexPath.row]
+//        delegate?.didSelect(menuItem: item)
+    
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         
         return 4
@@ -157,7 +166,7 @@ class MenuViewController : UIViewController, UITableViewDelegate, UITableViewDat
             
         case 1: //2 section
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SideBarSeconfTableViewCell", for: indexPath) as! SideBarSeconfTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SideBarSecondTableViewCell", for: indexPath) as! SideBarSecondTableViewCell
             cell.selectionStyle = .none
             cell.backgroundColor =   UIColor(red: 0.16, green: 0.16, blue: 0.16, alpha: 1.00)
             return cell
